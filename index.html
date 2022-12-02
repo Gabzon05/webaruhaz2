@@ -97,13 +97,17 @@
           </div>
           <div class="mb-3">
             <label for="price" class="form-label" id="price-label"
-              >A termék ára:</label
-            >
+              >A termék ára:</label>
             <input type="number" class="form-control" id="price" />
           </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="isInStock" />
-            
+          <div class="mb-3">
+            <label for="type" class="form-label" id="type-label"
+            >A termék típusa:</label>
+            <input type="text" class="form-control" id="type"/>
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label" id="quantity-label">A termék mennyisége:</label>
+            <input type="number" class="form-control ms-2" id="quantity" value="1" min="1" >
           </div>
           <button type="submit" class="btn btn-primary" id="save-product">
             Mentés
