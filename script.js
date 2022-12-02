@@ -45,7 +45,9 @@ state = {
     cart: [],
 
     event: "read", //milyen állapotban van: read, delete, update, create
-    currentId: null //Update esetén itt tároljuk a módosítandó product id-jét
+    currentId: null, //Update esetén itt tároljuk a módosítandó product id-jét
+    url: "http://localhost:3000/products"
+
 }
 
 //#region Segéd függvények
@@ -256,7 +258,10 @@ function renderProducts(){
     console.log(state.products);
     state.event = "read";
     let prodctsHtml = "";
-    
+    fetch(state.url)
+    .then(response => response.json())
+    .then((data) => {console.log("data",data)
+    state.products = data;
     state.products.forEach(product => {
         prodctsHtml += `
         <div class="col">
@@ -264,6 +269,7 @@ function renderProducts(){
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">Termék ár: ${product.price} Ft</p>
+                    <p class="card-text">Típus: ${product.type}</p>
                     <p class="card-text">Raktáron: ${product.quantity} db</p>
                 </div>
 
@@ -273,6 +279,7 @@ function renderProducts(){
                     <button type="button" 
                         class="btn btn-danger btn-sm"
                         onclick="deleteProduct('${product.id}')"
+
                     >
                         Törlés
                     </button>
@@ -311,6 +318,9 @@ function renderProducts(){
         
     });
     document.getElementById("product-list").innerHTML = prodctsHtml;
+       
+});
+
 }
 
 function quantityInputCheck(id){
@@ -400,9 +410,18 @@ function updateProduct(id){
 //Delete: Töröl gomb függvénye
 function deleteProduct(id){
     state.event = "delete";
-    let index = searchIndex(id)
-    state.products.splice(index,1);
-    renderProducts()
+    // let index = searchIndex(id)
+    // state.products.splice(index,1);
+    let url = `${state.url}/${id}`
+    fetch(url,{method:"delete"})
+    .then(() => {
+
+        renderProducts()
+    })
+    
+    
+
+
 }
 
 //Amikor betöltődött az oldal, elindul a: renderProducts függvény

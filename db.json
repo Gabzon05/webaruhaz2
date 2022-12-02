@@ -1,19 +1,32 @@
 {
-  "posts": [
+  "products": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "Áru 1",
+      "price": 1500,
+      "quantity": 97,
+      "type": "tejtermék"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "name": "Áru 2",
+      "price": 1500,
+      "quantity": 97,
+      "type": "tejtermék"
+    },
+    {
+      "id": 3,
+      "name": "Áru 3",
+      "price": 1500,
+      "quantity": 97,
+      "type": "tejtermék"
+    },
+    {
+      "id": 4,
+      "name": "Áru 4",
+      "price": 1500,
+      "quantity": 97,
+      "type": "tejtermék"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
